@@ -28,7 +28,6 @@ temp/
 
 # Resized assets (generated locally before upload)
 assets/resized/
-assets/originals/
 
 # VSCode settings (if shared repo)
 .vscode/
