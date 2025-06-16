@@ -1,0 +1,48 @@
+# Node.js dependencies
+node_modules/
+
+# Build artifacts (if you add build processes later)
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Mac / OS files
+.DS_Store
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Resized assets (generated locally before upload)
+assets/resized/
+assets/originals/
+
+# VSCode settings (if shared repo)
+.vscode/
+
+# Cloudflare Worker configs (local dev keys etc)
+wrangler.toml
+wrangler.dev.toml
+wrangler.publish.toml
+
+# GitHub backup files
+*.bak
+*.swp
+
+# Runtime files (if you add them later)
+.pnpm-store/
+.cache/
+.eslintcache
