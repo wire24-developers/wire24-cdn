@@ -1,6 +1,7 @@
 {
   "name": "wire24-cdn",
   "version": "1.0.0",
+  "description": "Wire24 production CDN pipeline for asset optimization and Cloudflare R2 storage",
   "type": "module",
   "scripts": {
     "upload": "node scripts/generate-assets.js"
