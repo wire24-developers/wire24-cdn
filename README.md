@@ -14,7 +14,8 @@ Excellent — here’s a **complete `README.md`** for your Wire24 CDN repo:
 
 - ✅ Sharp-based image resizing pipeline
 - ✅ Uploads to Cloudflare R2 using AWS SDK v3 (`@aws-sdk/client-s3`)
-- ✅ Multiple format support: PNG, WebP, AVIF
+- ✅ Multiple format support for images: PNG, WebP, AVIF
+- ✅ Multiple format support for videos: MP4, WAV
 - ✅ Multiple size variants for responsive delivery
 - ✅ Versioned asset paths (`v1/`)
 - ✅ Automated GitHub Actions workflow for CI/CD
@@ -30,7 +31,8 @@ wire24-cdn/
 ├── assets/
 │ └── originals/ # Place your original high-res source assets here
 ├── scripts/
-│ └── generate-assets.js # Resizing and upload pipeline
+│ └── generate-image-assets.js # Image resizing and upload pipeline
+│ └── generate-video-assets.js # Video upload pipeline
 ├── shared/
 │ └── cdnAssets.js # Shared asset manifest for apps
 ├── .github/

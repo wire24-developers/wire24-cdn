@@ -1,0 +1,108 @@
+{
+  "version": "v1",
+  "images": [
+    {
+      "name": "welcome-flying-cuate",
+      "variants": [
+        {
+          "size": 64,
+          "format": "avif",
+          "url": "https://cdn.wire24.co/v1/images/welcome-flying-cuate-64-5ddc050d.avif"
+        },
+        {
+          "size": 64,
+          "format": "webp",
+          "url": "https://cdn.wire24.co/v1/images/welcome-flying-cuate-64-84155cf0.webp"
+        },
+        {
+          "size": 64,
+          "format": "png",
+          "url": "https://cdn.wire24.co/v1/images/welcome-flying-cuate-64-c7855fcd.png"
+        }
+      ]
+    }
+  ],
+  "flags": [],
+  "icons": [
+    {
+      "name": "add-payment-card",
+      "variants": [
+        {
+          "color": "white",
+          "assets": [
+            {
+              "size": 64,
+              "format": "webp",
+              "url": "https://cdn.wire24.co/v1/icons/add-payment-card/add-payment-card-neutral-white-64-3c3d6e34.webp"
+            },
+            {
+              "size": 64,
+              "format": "png",
+              "url": "https://cdn.wire24.co/v1/icons/add-payment-card/add-payment-card-neutral-white-64-449daf95.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "announcement",
+      "variants": [
+        {
+          "color": "white",
+          "assets": [
+            {
+              "size": 64,
+              "format": "webp",
+              "url": "https://cdn.wire24.co/v1/icons/announcement/announcement-neutral-white-64-394fe35e.webp"
+            },
+            {
+              "size": 64,
+              "format": "png",
+              "url": "https://cdn.wire24.co/v1/icons/announcement/announcement-neutral-white-64-ecd9a0d8.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "anti-clockwize",
+      "variants": [
+        {
+          "color": "white",
+          "assets": [
+            {
+              "size": 64,
+              "format": "webp",
+              "url": "https://cdn.wire24.co/v1/icons/anti-clockwize/anti-clockwize-neutral-white-64-2c0c9f79.webp"
+            },
+            {
+              "size": 64,
+              "format": "png",
+              "url": "https://cdn.wire24.co/v1/icons/anti-clockwize/anti-clockwize-neutral-white-64-d0ed83e0.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "anticlockwise",
+      "variants": [
+        {
+          "color": "white",
+          "assets": [
+            {
+              "size": 64,
+              "format": "png",
+              "url": "https://cdn.wire24.co/v1/icons/anticlockwise/anticlockwise-neutral-white-64-74c35d05.png"
+            },
+            {
+              "size": 64,
+              "format": "webp",
+              "url": "https://cdn.wire24.co/v1/icons/anticlockwise/anticlockwise-neutral-white-64-d6b78305.webp"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

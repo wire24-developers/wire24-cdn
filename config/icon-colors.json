@@ -1,0 +1,46 @@
+{
+  "neutral": {
+    "white": "#FFFFFF",
+    "gray-50": "#E5E7EB",
+    "gray-100": "#EFF4FF",
+    "gray-300": "#CDCED0",
+    "gray-400": "#9CA3AF",
+    "gray-600": "#4B5563",
+    "gray-700": "#404040",
+    "slate": "#21303A",
+    "black": "#000000"
+  },
+  "primary": {
+    "blue-400": "#2563EB",
+    "blue-600": "#0F5C95",
+    "cyan-400": "#01BAFF",
+    "cyan-300": "#2DA0F7",
+    "cyan-200": "#8EE0FF",
+    "sky": "#26C4FF"
+  },
+  "success": {
+    "green-500": "#10B981",
+    "green-600": "#16A34A",
+    "lime": "#5DDE26",
+    "olive": "#5E872F",
+    "mint": "#B5E890",
+    "leaf": "#08CD1F"
+  },
+  "warning": {
+    "orange-500": "#F97316",
+    "orange-600": "#EA580C",
+    "amber": "#F9D24C",
+    "pumpkin": "#FF6937"
+  },
+  "danger": {
+    "red-400": "#ED4C5C",
+    "red-500": "#F55151",
+    "rose": "#FC7373"
+  },
+  "accent": {
+    "indigo": "#7C3AED",
+    "purple": "#9332A5",
+    "brown": "#B5715A",
+    "orange-400": "#F78437"
+  }
+}

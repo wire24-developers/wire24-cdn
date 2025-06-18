@@ -4,12 +4,24 @@
   "description": "Wire24 production CDN pipeline for asset optimization and Cloudflare R2 storage",
   "type": "module",
   "scripts": {
-    "upload": "node scripts/generate-assets.js"
+    "upload": "node scripts/generate-image-assets.js",
+    "generate:manifest": "node scripts/auto-manifest-generator.js",
+    "clear": "node scripts/clear-bucket-prefix.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.828.0",
     "aws-sdk": "^2.1692.0",
+    "boxen": "^8.0.1",
+    "chalk": "^5.4.1",
+    "cli-progress": "^3.12.0",
+    "crypto": "^1.0.1",
     "dotenv": "^16.5.0",
-    "sharp": "^0.33.5"
+    "p-limit": "^6.2.0",
+    "pretty-ms": "^9.2.0",
+    "sharp": "^0.33.5",
+    "yargs": "^18.0.0"
+  },
+  "bin": {
+    "wire24": "./bin/index.js"
   }
 }
