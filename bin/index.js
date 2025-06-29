@@ -34,6 +34,16 @@ const { argv } = yargs(hideBin(process.argv))
     type: "boolean",
     default: false,
   })
+  .option("flags-only", {
+    describe: "Only process and upload flags",
+    type: "boolean",
+    default: false,
+  })
+  .option("redo-only", {
+    describe: "Only re-process icons inside the /redo folder",
+    type: "boolean",
+    default: false,
+  })
   .option("clear-all", {
     describe: "Clear all CDN assets under the provided --tag prefix",
     type: "boolean",
@@ -42,10 +52,13 @@ const { argv } = yargs(hideBin(process.argv))
   .help("h")
   .alias("h", "help")
   .example("wire24 --tag v5 --dry", "Dry-run upload for version v5")
+  .example("wire24 --tag v5 --icons-only", "Only process icon assets")
+  .example("wire24 --tag v5 --flags-only", "Only process flag assets")
+  .example("wire24 --tag v5 --redo-only", "Only process /redo icons")
   .example("wire24 --tag v5 --clear-all", "Delete all files under v5/")
   .wrap(100);
 
-const { tag, dry, iconsOnly, clearAll } = argv;
+const { tag, dry, iconsOnly, flagsOnly, redoOnly, clearAll } = argv;
 
 (async () => {
   if (!tag) {
@@ -62,5 +75,7 @@ const { tag, dry, iconsOnly, clearAll } = argv;
     versionOverride: tag,
     dryRun: dry,
     iconsOnly,
+    flagsOnly,
+    redoOnly,
   });
 })();

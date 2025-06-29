@@ -42,12 +42,14 @@ const SUPPORTED_IMAGE_EXTENSIONS = [
   ".webp",
   ".tiff",
   ".gif",
+  ".svg",
 ];
 const WIRE24_EXTENSION = ".w24";
 
 const imagesPath = path.join("./assets/originals/images");
 const flagsPath = path.join("./assets/originals/flags");
 const iconsPath = path.join("./assets/originals/icons");
+const iconsRedoPath = path.join("./assets/originals/icons/redo");
 const iconColorsPath = path.join("./config/icon-colors.json");
 const logsPath = path.join("./logs");
 
@@ -159,16 +161,53 @@ const flattenIconColors = async () => {
   return flattened;
 };
 
-const processIconFile = async (file, version, dryRun, colorVariants) => {
-  const iconPath = path.join(iconsPath, file);
+const processRedoIcons = async (version, dryRun) => {
+  const icons = await fs.readdir(iconsRedoPath);
+  const colorVariants = await flattenIconColors();
+  // const iconPath = isFullPath ? file : path.join(iconsPath, file);
+
+  const redoTasks = icons
+    .filter((f) => f.endsWith(".svg") && !f.endsWith(WIRE24_EXTENSION))
+    .map((f) =>
+      limit(() =>
+        processIconFile(
+          path.join("redo", f),
+          version,
+          dryRun,
+          colorVariants,
+          false
+        )
+      )
+    );
+
+  await Promise.all(redoTasks);
+};
+
+const processIconFile = async (
+  file,
+  version,
+  dryRun,
+  colorVariants,
+  isFullPath = false
+) => {
+  const iconPath = isFullPath
+    ? path.join(iconsPath, file)
+    : path.join(iconsPath, file);
   const iconName = path.parse(file).name;
   const originalSvg = await fs.readFile(iconPath, "utf8");
 
   for (const { slug: colorSlug, hex } of colorVariants) {
     try {
+      const needsBackground = hex.toLowerCase() === "#ffffff";
       const styledSvg = originalSvg.replace(
-        /<svg([^>]+)>/,
-        `<svg$1><style>* { fill: ${hex}; }</style>`
+        /<svg([^>]*)>/,
+        `<svg$1>
+    ${
+      needsBackground ? '<rect width="100%" height="100%" fill="#000000"/>' : ""
+    }
+    <style>
+      * { fill: none; stroke: ${hex}; stroke-width: 2; }
+    </style>`
       );
 
       const svgHash = generateHash(Buffer.from(styledSvg));
@@ -227,11 +266,12 @@ const processAssetsInParallel = async (version, dryRun) => {
     flattenIconColors(),
   ]);
 
-  const imageTasks = images.map((file) =>
-    limit(() => processImageFile(file, version, imagesPath, dryRun, "images"))
-  );
   const flagTasks = flags.map((file) =>
     limit(() => processImageFile(file, version, flagsPath, dryRun, "flags"))
+  );
+
+  const imageTasks = images.map((file) =>
+    limit(() => processImageFile(file, version, imagesPath, dryRun, "images"))
   );
   const iconTasks = icons
     .filter((file) => file.endsWith(".svg") && !file.endsWith(WIRE24_EXTENSION))
@@ -264,6 +304,8 @@ export default async function runPipeline({
   versionOverride,
   dryRun = false,
   iconsOnly = false,
+  flagsOnly = false,
+  redoOnly = false,
 } = {}) {
   const version = versionOverride || (await determineNextVersion());
   const start = Date.now();
@@ -277,6 +319,15 @@ export default async function runPipeline({
         limit(() => processIconFile(f, version, dryRun, colorVariants))
       );
     await Promise.all(iconTasks);
+  } else if (flagsOnly) {
+    const flags = await fs.readdir(flagsPath);
+
+    const flagTasks = flags.map((file) =>
+      limit(() => processImageFile(file, version, flagsPath, dryRun, "flags"))
+    );
+    await Promise.all(flagTasks);
+  } else if (redoOnly) {
+    await processRedoIcons(version, dryRun);
   } else {
     await processAssetsInParallel(version, dryRun);
   }
